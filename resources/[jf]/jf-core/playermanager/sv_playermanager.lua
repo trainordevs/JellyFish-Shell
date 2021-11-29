@@ -1,6 +1,6 @@
 players = {}
 
-AddEventHandler('playerConnecting', function(playername, setKickReason)
+AddEventHandler('playerConnecting', function(playername)
     local player = source
     local identifiers = GetPlayerIdentifiers(player)
     local rsLicense
@@ -12,8 +12,7 @@ AddEventHandler('playerConnecting', function(playername, setKickReason)
     end
 
     if not rsLicense then
-        local kickReason = "We were unable to fetch your Rockstar License."
-        DropPlayer(kickReason)
+        DropPlayer("We were unable to fetch your Rockstar License.")
         CancelEvent()
     end
 
@@ -26,12 +25,3 @@ AddEventHandler('playerConnecting', function(playername, setKickReason)
         end
     end)
 end)
-
-function table.contains(table, element)
-  for _, value in pairs(table) do
-    if value == element then
-      return true
-    end
-  end
-  return false
-end
