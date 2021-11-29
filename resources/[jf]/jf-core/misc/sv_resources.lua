@@ -1,6 +1,7 @@
 -- List resources here to load on server startup. 
 local resources = {
-    'jf-banmanager'
+    'jf-banmanager',
+    'jf-playermanager'
 }
 
 Citizen.CreateThread(function()
