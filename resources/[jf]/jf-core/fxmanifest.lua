@@ -1,14 +1,24 @@
+fx_version 'cerulean'
+game 'gta5'
+
+author 'An awesome dude'
+description 'An awesome, but short, description'
+version '1.0.0'
 client_scripts {
-    'client/cl_utils.lua',
-    'client/cl_jumping.lua'
+    'utils/cl_utils.lua',
+    'misc/cl_jumping.lua'
 }
 
 server_scripts {
-    'server/sv_utils.lua',
-    'server/sv_db.lua',
-    'server/sv_versioncheck.lua',
-    'server/sv_serversettings.lua',
-    'server/sv_banmanager.lua'
+    'utils/sv_utils.lua',
+    'misc/sv_resources.lua',
+    'misc/sv_versioncheck.lua',
+    'banmanager/sv_banmanager.lua',
+    'playermanager/sv_playermanager.lua'
+}
+
+dependencies {
+    'oxmysql'
 }
 
 exports {
