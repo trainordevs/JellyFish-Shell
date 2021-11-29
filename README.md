@@ -1,10 +1,10 @@
 # Jellyfish-Core
 
-Jellyfish Core is a public and open-sourced FiveM framework for roleplaying. Jellyfish is built for creating economy-based RP servers on FiveM with ease and minimal knowledge.
-[Discord Link](https://discord.gg/4PWE7mM4pR)
+[Official Discord](https://discord.gg/4PWE7mM4pR)
 
-## TO-DO
+## License
 
-- [ ] Build the core
+    GNU GENERAL PUBLIC LICENSE
+    Version 3, 29 June 2007
 
-## Current Featurelist
+    Please read the full license in the LICENSE file.
