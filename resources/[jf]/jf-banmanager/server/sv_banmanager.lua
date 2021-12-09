@@ -1,13 +1,7 @@
-AddEventHandler('playerConnecting', function()
-    local player = source
-    local identifiers = GetPlayerIdentifiers(player)
-    local rsLicense
+local JellyFish = exports['jf-core']:GetObject()
 
-    for k,v in pairs(identifiers) do
-        if string.sub(v, 1, string.len("license:")) == "license:" then
-            rsLicense = v
-        end
-    end
+AddEventHandler('playerConnecting', function()
+    local rsLicense = JellyFish.Players.GetRockstarLicense(src)
 
     if not rsLicense then
         DropPlayer("We were unable to fetch your Rockstar License.")
@@ -40,75 +34,3 @@ AddEventHandler('playerConnecting', function()
         end
     end)
 end)
-
-function jf_isPlayerBanned(license)
-    if not rsLicense then
-        DropPlayer("We were unable to fetch your Rockstar License.")
-        CancelEvent()
-    end
-
-    exports.oxmysql:execute('SELECT * FROM bans WHERE license = ?', { rsLicense }, function(result)
-        if result[1] then
-            return true
-        end
-    end)
-
-    return false
-end
-
-function jf_getBanReason(license)
-    if not rsLicense then
-        DropPlayer("We were unable to fetch your Rockstar License.")
-        CancelEvent()
-    end
-
-    exports.oxmysql:execute('SELECT * FROM bans WHERE license = ?', { rsLicense }, function(result)
-        if result[1] then
-            local ban_reason
-
-            for _, v in pairs(result) do
-                ban_reason = v.ban_reason
-            end
-
-            return ban_reason
-        end
-    end)
-end
-
-function jf_getBanExpire(license)
-    if not rsLicense then
-        DropPlayer("We were unable to fetch your Rockstar License.")
-        CancelEvent()
-    end
-
-    exports.oxmysql:execute('SELECT * FROM bans WHERE license = ?', { rsLicense }, function(result)
-        if result[1] then
-            local ban_expire
-
-            for _, v in pairs(result) do
-                ban_expire = v.ban_expire
-            end
-
-            return ban_expire
-        end
-    end)
-end
-
-function jf_getBanId(license)
-    if not rsLicense then
-        DropPlayer("We were unable to fetch your Rockstar License.")
-        CancelEvent()
-    end
-
-    exports.oxmysql:execute('SELECT * FROM bans WHERE license = ?', { rsLicense }, function(result)
-        if result[1] then
-            local ban_id
-
-            for _, v in pairs(result) do
-                ban_id = v.ban_id
-            end
-
-            return ban_id
-        end
-    end)
-end
