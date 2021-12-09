@@ -1,4 +1,4 @@
-# Jellyfish-Core
+# JellyFish Shell
 
 [Official Discord](https://discord.gg/4PWE7mM4pR)
 
